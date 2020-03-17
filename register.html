@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register (From)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+  </head>
+  <body>
+    <div class="ui container">
+      <h2>Course Cypress Automate Testing @PTT</h2>
+      <div class="ui top attached tabular menu">
+        <a class="item active" href="register.html" data-tab="first"
+          >Register</a
+        >
+        <a class="item" href="window.html" data-tab="second">Window</a>
+      </div>
+      <div class="ui bottom attached tab segment active" data-tab="first">
+        <form class="ui form">
+          <div class="fields">
+            <div class="eight  wide field">
+              <label for="">First Name</label>
+              <input type="text" name="firstName" id="firstName" required />
+            </div>
+            <div class="eight wide field">
+              <label for="">Last Name</label>
+              <input type="text" name="lastName" id="lastName" required />
+            </div>
+          </div>
+          <div class="fields">
+            <div class="eight  wide field">
+              <label for="">Age</label>
+              <input type="number" name="age" id="age" required />
+            </div>
+            <div class="eight wide field">
+              <label for="">Phone</label>
+              <input type="text" name="phone" id="phone" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="">Address</label>
+            <textarea
+              name="address"
+              id="address"
+              cols="30"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <div class="fields">
+            <div class="eight  wide field">
+              <label for="">Email</label>
+              <input type="email" name="email" id="email" />
+            </div>
+            <div class="eight wide field">
+              <label for="">Gender</label>
+              <div class="inline fields">
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="gender" id="male" />
+                    <label for="">Male</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="gender" id="female" />
+                    <label for="">FeMale</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fields">
+            <div class="eight wide field">
+              <label for="">Occupation</label>
+              <select name="occupation" id="occupation">
+                <option value="cook">Cook</option>
+                <option value="doctor">Doctor</option>
+                <option value="driver">Driver</option>
+                <option value="farmer">Farmer</option>
+                <option value="nurse">Nurse</option>
+                <option value="soldire">Soldier</option>
+                <option value="teacher">Teacher</option>
+              </select>
+            </div>
+            <div class="eight wide field"></div>
+          </div>
+          <div
+            class="ui centered aligned floated field"
+            style="text-align: center;"
+          >
+            <button class="ui green button" type="submit">Register</button>
+            <button class="ui red button" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
