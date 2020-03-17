@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window Methods</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+  </head>
+  <body>
+    <div class="ui container">
+      <h2>Course Cypress Automate Testing @PTT</h2>
+      <div class="ui top attached tabular menu">
+        <a class="item" href="register.html" data-tab="first">Register</a>
+        <a class="item" href="window.html" data-tab="second">Window</a>
+        <a class="item active" href="login.html" data-tab="third">Login</a>
+        <a class="item" href="change-password.html" data-tab="four">Change Password</a>
+        <a class="item" href="table.html" data-tab="five">Table Coronavirus-19</a>
+      </div>
+      <div class="ui bottom attached tab segment active" data-tab="first">
+        <!-- Enter Code Here-->
+        <div class="ui three column centered grid">
+          <form action="" class="ui column form" id="login">
+            <div class="field">
+              <label for="">UserName</label>
+              <input type="text" name="username" id="username" />
+            </div>
+            <div class="field">
+              <label for="">Password</label>
+              <input type="text" name="password" id="password" />
+            </div>
+            <button class="ui green button" type="submit">Login</button>
+            <button class="ui orange button" type="reset">Reset</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = ()=>{
+             
+      }
+      document.getElementById('login').addEventListener('submit',(e)=>{
+        console.log('e ::==',e)        
+        e.preventDefault();
+        const username = document.getElementById('username').value
+        const password = document.getElementById('password').value  
+        console.log(`username ::==${username} , password ::== ${password}`)
+        if(username==undefined || password == undefined || 
+          username=='' || password == '' ){
+          alert('กรุณากรอก username หรือ password')
+        }else if(password.length < 4){
+          alert('กรุณากรอก password มากกว่า')
+        }
+        
+      })
+    </script>
+  </body>
+</html>

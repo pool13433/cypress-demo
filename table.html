@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window Methods</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+  </head>
+  <body>
+    <div class="ui container">
+      <h2>Course Cypress Automate Testing @PTT</h2>
+      <div class="ui top attached tabular menu">
+        <a class="item" href="register.html" data-tab="first">Register</a>
+        <a class="item" href="window.html" data-tab="second">Window</a>
+        <a class="item" href="login.html" data-tab="third">Login</a>
+        <a class="item" href="change-password.html" data-tab="four"
+          >Change Password</a
+        >
+        <a class="item active" href="table.html" data-tab="five">Table Coronavirus-19</a>
+      </div>
+      <div class="ui bottom attached tab segment active" data-tab="first">
+        <table class="ui tablet stackable celled striped table" id="covidState">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Country</th>
+              <th>Cases</th>
+              <th>Today Cases</th>
+              <th>Deaths</th>
+              <th>Today Deaths</th>
+              <th>Recovered</th>
+              <th>Active</th>
+              <th>Critical</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      Number.prototype.toCurrency = function(n=2,x=3) {
+        var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+        return this.toFixed(Math.max(0, ~~n)).replace(
+          new RegExp(re, 'g'),
+          '$&,'
+        );
+      };
+
+      window.onload = async () => {
+        const data = await fetch(
+          'https://coronavirus-19-api.herokuapp.com/countries'
+        ).then(http => http.json());
+        //console.log('data ::==', data);
+        const $covidState = document.getElementById('covidState');
+        let $tbody = covidState.children[1]; // tbody
+        //console.log('$tbody ::==',$tbody)
+        data
+          .map((item, index) => {
+            return { ...item, ...{ no: index + 1 } };
+          })
+          .forEach(item => {
+            let $tr = document.createElement('TR');
+            $tr.innerHTML = `
+              <td>${item.no}</td>
+              <td>${item.country}</td>
+              <td>${item.cases.toCurrency(0)}</td>
+              <td>${item.todayCases.toCurrency(0)}</td>
+              <td>${item.deaths.toCurrency(0)}</td>
+              <td>${item.todayDeaths.toCurrency(0)}</td>
+              <td>${item.recovered.toCurrency(0)}</td>
+              <td>${item.active.toCurrency(0)}</td>
+              <td>${item.critical.toCurrency(0)}</td>
+          `;
+            $tbody.appendChild($tr);
+          });
+      };
+    </script>
+  </body>
+</html>
