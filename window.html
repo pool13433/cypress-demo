@@ -22,16 +22,41 @@
         <a class="item" href="table.html" data-tab="five">Table Coronavirus-19</a>
       </div>
       <div class="ui bottom attached tab segment active" data-tab="first">
-        <button class="ui green button" onclick="window.alert('Window Alert')">
+        <button class="ui green button" onclick="alertFunction()">
           Window Alert
         </button>
-        <button class="ui blue button" onclick="window.prompt('Window Promt')">
+        <button class="ui blue button" onclick="promptFunction()">
           Window Promt
         </button>
-        <button class="ui orange button" onclick="window.confirm('Window Confirm')">
+        <button class="ui orange button" onclick="confirmFunction()">
           Window Confirm
         </button>
       </div>
+      <p id="TextOut"></p>
     </div>
+
+    <script>
+       function alertFunction() {
+        alert("Alert!!");
+        document.getElementById("TextOut").innerHTML = "Alert Click!!";
+      }
+
+      function promptFunction() {
+        var person = prompt("Please enter your name");
+        if (person != null) {
+          document.getElementById("TextOut").innerHTML =
+          person;
+        }
+      }
+
+      function confirmFunction() {
+        var person = confirm("Confirm?");
+        if (person == true) {
+          document.getElementById("TextOut").innerHTML = "Confirm";
+        } else {
+          document.getElementById("TextOut").innerHTML = "No";
+        }
+      }
+    </script>
   </body>
 </html>
