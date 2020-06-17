@@ -14,6 +14,9 @@
       <h2>Course Cypress Automate Testing @PTT</h2>
       <div class="ui top attached tabular menu">
         <a class="item" href="register.html" data-tab="first">Register</a>
+        <a class="item" href="register-list.html" data-tab="first-list"
+          >Register List</a
+        >
         <a class="item" href="window.html" data-tab="second">Window</a>
         <a class="item active" href="login.html" data-tab="third">Login</a>
         <a class="item" href="change-password.html" data-tab="four">Change Password</a>
@@ -53,7 +56,7 @@
         }else if(password.length < 4){
           alert('กรุณากรอก password มากกว่า')
         }
-        
+        e.target.submit()
       })
     </script>
   </body>

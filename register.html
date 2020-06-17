@@ -8,68 +8,81 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .required span{
+        color: red;        
+      }
+    </style>
   </head>
   <body>
-    <div class="ui container">
+    <div class="ui container" id="cypressApp">
       <h2>Course Cypress Automate Testing @PTT</h2>
       <div class="ui top attached tabular menu">
         <a class="item active" href="register.html" data-tab="first"
           >Register</a
         >
+        <a class="item" href="register-list.html" data-tab="first-list"
+          >Register List</a
+        >
         <a class="item" href="window.html" data-tab="second">Window</a>
         <a class="item" href="login.html" data-tab="third">Login</a>
-        <a class="item" href="change-password.html" data-tab="four">Change Password</a>
-        <a class="item" href="table.html" data-tab="five">Table Coronavirus-19</a>
+        <a class="item" href="change-password.html" data-tab="four"
+          >Change Password</a
+        >
+        <a class="item" href="table.html" data-tab="five"
+          >Table Coronavirus-19</a
+        >
       </div>
       <div class="ui bottom attached tab segment active" data-tab="first">
-        <form class="ui form" method="POST">
+        <form class="ui form" method="POST" @submit.prevent="saveRegister">
           <div class="fields">
-            <div class="eight  wide field">
-              <label for="">First Name</label>
-              <input type="text" name="firstName" id="firstName" required />
+            <div class="four wide field">
+              <label class="required" for="">First Name <span>*</span></label>
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                v-model="user.firstName"
+                required
+              />
             </div>
-            <div class="eight wide field">
-              <label for="">Last Name</label>
-              <input type="text" name="lastName" id="lastName" required />
+            <div class="four wide field">
+              <label class="required">Last Name <span>*</span></label>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                v-model="user.lastName"
+                required
+              />
             </div>
-          </div>
-          <div class="fields">
-            <div class="eight  wide field">
-              <label for="">Age</label>
-              <input type="number" name="age" id="age" required />
-            </div>
-            <div class="eight wide field">
-              <label for="">Phone</label>
-              <input type="text" name="phone" id="phone" required />
-            </div>
-          </div>
-          <div class="field">
-            <label for="">Address</label>
-            <textarea
-              name="address"
-              id="address"
-              cols="30"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-          <div class="fields">
-            <div class="eight  wide field">
-              <label for="">Email</label>
-              <input type="email" name="email" id="email" />
-            </div>
-            <div class="eight wide field">
-              <label for="">Gender</label>
+            <div class="four wide field">
+              <label class="required">Gender <span>*</span></label>
               <div class="inline fields">
                 <div class="field">
                   <div class="ui radio checkbox">
-                    <input type="radio" name="gender" id="male" />
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="male"
+                      value="male"
+                      v-model="user.gender"
+                      required
+                    />
                     <label for="">Male</label>
                   </div>
                 </div>
                 <div class="field">
                   <div class="ui radio checkbox">
-                    <input type="radio" name="gender" id="female" />
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="female"
+                      value="female"
+                      v-model="user.gender"
+                      required
+                    />
                     <label for="">FeMale</label>
                   </div>
                 </div>
@@ -77,9 +90,44 @@
             </div>
           </div>
           <div class="fields">
-            <div class="eight wide field">
-              <label for="">Occupation</label>
-              <select name="occupation" id="occupation">
+            <div class="four wide field">
+              <label class="required">Phone <span>*</span></label>
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                v-model="user.phone"
+                required
+              />
+            </div>
+            <div class="four wide field">
+              <label class="required">Email <span>*</span></label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                v-model="user.email"
+                required
+              />
+            </div>
+            <div class="two wide field">
+              <label class="required">Age <span>*</span></label>
+              <input
+                type="number"
+                name="age"
+                id="age"
+                v-model="user.age"
+                required
+              />
+            </div>
+            <div class="five wide field">
+              <label class="required">Occupation <span>*</span></label>
+              <select
+                name="occupation"
+                id="occupation"
+                v-model="user.occupation"
+                required
+              >
                 <option value="cook">Cook</option>
                 <option value="doctor">Doctor</option>
                 <option value="driver">Driver</option>
@@ -89,17 +137,52 @@
                 <option value="teacher">Teacher</option>
               </select>
             </div>
-            <div class="eight wide field"></div>
+          </div>
+          <div class="field">
+            <label for="">Address</label>
+            <textarea
+              name="address"
+              id="address"
+              cols="30"
+              rows="5"
+              v-model="user.address"
+              required
+            ></textarea>
           </div>
           <div
             class="ui centered aligned floated field"
             style="text-align: center;"
           >
-            <button class="ui green button" type="submit" id="register">Register</button>
+            <button class="ui green button" type="submit" id="register">
+              Register
+            </button>
             <button class="ui red button" type="reset" id="clear">Reset</button>
           </div>
         </form>
       </div>
     </div>
+    <script>
+      new Vue({
+        data: {
+          user: {},
+        },
+        created() {},
+        methods: {
+          saveRegister() {
+            let users = localStorage.getItem('users');
+            if (users) {
+              let _users = JSON.parse(users);
+              _users.push(this.user);
+              users = _users;
+            } else {
+              users = [this.user];
+            }
+            console.log('users ::==' + JSON.stringify(users));
+            localStorage.setItem('users', JSON.stringify(users));
+            eval('window.location.href = "./register-list.html"');
+          },
+        },
+      }).$mount('#cypressApp');
+    </script>
   </body>
 </html>

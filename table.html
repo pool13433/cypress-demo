@@ -14,6 +14,9 @@
       <h2>Course Cypress Automate Testing @PTT</h2>
       <div class="ui top attached tabular menu">
         <a class="item" href="register.html" data-tab="first">Register</a>
+        <a class="item" href="register-list.html" data-tab="first-list"
+          >Register List</a
+        >
         <a class="item" href="window.html" data-tab="second">Window</a>
         <a class="item" href="login.html" data-tab="third">Login</a>
         <a class="item" href="change-password.html" data-tab="four"
@@ -66,13 +69,13 @@
             $tr.innerHTML = `
               <td>${item.no}</td>
               <td>${item.country}</td>
-              <td>${item.cases.toCurrency(0)}</td>
-              <td>${item.todayCases.toCurrency(0)}</td>
-              <td>${item.deaths.toCurrency(0)}</td>
-              <td>${item.todayDeaths.toCurrency(0)}</td>
-              <td>${item.recovered.toCurrency(0)}</td>
-              <td>${item.active.toCurrency(0)}</td>
-              <td>${item.critical.toCurrency(0)}</td>
+              <td>${(item.cases || 0).toCurrency(0)}</td>
+              <td>${(item.todayCases || 0).toCurrency(0)}</td>
+              <td>${(item.deaths || 0).toCurrency(0)}</td>
+              <td>${(item.todayDeaths || 0).toCurrency(0)}</td>
+              <td>${(item.recovered || 0).toCurrency(0)}</td>
+              <td>${(item.active || 0).toCurrency(0)}</td>
+              <td>${(item.critical || 0).toCurrency(0)}</td>
           `;
             $tbody.appendChild($tr);
           });

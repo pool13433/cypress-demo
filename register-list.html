@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register (From)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="ui container" id="cypressApp">
+      <h2>Course Cypress Automate Testing @PTT</h2>
+      <div class="ui top attached tabular menu">
+        <a class="item" href="register.html" data-tab="first">Register</a>
+        <a class="item active" href="register-list.html" data-tab="first-list"
+          >Register List</a
+        >
+        <a class="item" href="window.html" data-tab="second">Window</a>
+        <a class="item" href="login.html" data-tab="third">Login</a>
+        <a class="item" href="change-password.html" data-tab="four"
+          >Change Password</a
+        >
+        <a class="item" href="table.html" data-tab="five"
+          >Table Coronavirus-19</a
+        >
+      </div>
+      <div class="ui bottom attached tab segment active" data-tab="first-list">
+        <table class="ui celled striped table">
+          <thead>
+            <tr>
+              <th>firstName - lastName</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Gender</th>
+              <th>Occupation</th>
+              <th>Address</th>
+              <th>#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(user,index) in users">
+              <td>{{user.firstName}} {{user.lastName}}</td>
+              <td>{{user.age}}</td>
+              <td>{{user.emai}}</td>
+              <td>{{user.phone}}</td>
+              <td>{{user.gender}}</td>
+              <td>{{user.occupation}}</td>
+              <td>{{user.address}}</td>
+              <td>
+                <div class="ui mini buttons icon">
+                  <!--<button class="ui blue button icon">
+                    <i class="pencil icon"></i>
+                  </button>-->
+                  <button
+                    class="ui red button icon"
+                    @click="()=> deleteUser(index)"
+                  >
+                    <i class="remove icon"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        data: {
+          users: [],
+        },
+        created() {
+          this.fetchUsers()
+        },
+        methods: {
+          fetchUsers() {
+            let users = localStorage.getItem('users');
+            if (users) {
+              this.users = JSON.parse(users);
+            }
+          },
+          deleteUser(index) {
+            if (
+              confirm('do you confirm that you want to delete the information?')
+            ) {
+              let users = localStorage.getItem('users');
+              if (users) {
+                let _users = JSON.parse(users)
+                _users.splice(index, 1);
+                localStorage.setItem('users', JSON.stringify(_users));
+                this.fetchUsers()
+              }
+            }
+          },
+        },
+      }).$mount('#cypressApp');
+    </script>
+  </body>
+</html>
