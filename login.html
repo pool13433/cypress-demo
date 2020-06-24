@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="ui container">
-      <h2>Course Cypress Automate Testing @PTT</h2>
+      <h2>Course Cypress Automated Testing @PTT</h2>
       <div class="ui top attached tabular menu">
         <a class="item" href="index.html" data-tab="zero">Index</a>
         <a class="item" href="register.html" data-tab="first">Register</a>
@@ -48,17 +48,25 @@
       document.getElementById('login').addEventListener('submit',(e)=>{
         console.log('e ::==',e)        
         e.preventDefault();
-        const username = document.getElementById('username').value
-        const password = document.getElementById('password').value  
+        const username = isRequired('username')
+        const password = isRequired('password')  
         console.log(`username ::==${username} , password ::== ${password}`)
         if(username==undefined || password == undefined || 
           username=='' || password == '' ){
           alert('กรุณากรอก username หรือ password')
+          return;
         }else if(password.length < 4){
           alert('กรุณากรอก password มากกว่า')
-        }
-        e.target.submit()
+          return;
+        }else{
+          alert('Login Successfully.')
+          //e.target.submit()  
+        }        
       })
+      function isRequired(elementId){
+        const value =  document.getElementById(elementId).value
+        return value;
+      }
     </script>
   </body>
 </html>

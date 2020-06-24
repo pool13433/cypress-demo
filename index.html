@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="ui container" id="cypressApp">
-      <h2>Course Cypress Automate Testing @PTT</h2>
+      <h2>Course Cypress Automated Testing @PTT</h2>
       <div class="ui top attached tabular menu">
         <a class="item active" href="index.html" data-tab="zero">Index</a>
         <a class="item" href="register.html" data-tab="first">Register</a>
@@ -28,26 +28,27 @@
         >
       </div>
       <div class="ui bottom attached tab segment active form" data-tab="zero">
-        <div class="eight fluid wide inline field">
+        <div class="nine fluid wide inline field">
           ปี
           <input
             type="range"
             min="1"
             max="100"
-            v-model="distanceYear"
+            step="1" value="1"
+            id="distanceYear"
             style="width: 100%;"
           />
         </div>
-        <div class="eight wide field">
-          <h3>วันและเวลา ปัจจุบัน {{nowDate}}</h3>
-          <h3>วันและเวลา ย้อนหลัง {{distanceYear}} ปี คือ {{pastDate}}</h3>
-          <h3>วันและเวลา อนาคต {{distanceYear}} ปี คือ {{futureDate}}</h3>
+        <div class="sixteen wide field">
+          <h2>วันและเวลา ปัจจุบัน <span id="nowDate"> {{nowDate}}</span></h2>
+          <h2>วันและเวลา ย้อนหลัง <span class="distanceYear"></span> ปี คือ <span id="pastDate">{{pastDate}}</span></h2>
+          <h2>วันและเวลา อนาคต <span class="distanceYear"></span>  ปี คือ <span id="futureDate"> {{futureDate}}</span></h2>
         </div>
       </div>
     </div>
     <script>
       const HUMAN_FORMAT = 'DD/MM/YYYY HH:mm:ss';      
-      new Vue({
+      /*new Vue({
         data: {
           distanceYear: 10,
           nowDate: moment().format(HUMAN_FORMAT),
@@ -71,7 +72,28 @@
             }, 1000);
           });
         }
-      }).$mount('#cypressApp');
+      }).$mount('#cypressApp');*/
+
+      window.onload = ()=>{
+        document.getElementById('nowDate').innerHTML =  moment().format(HUMAN_FORMAT)
+        setInterval(()=>{
+          document.getElementById('nowDate').innerHTML =  moment().format(HUMAN_FORMAT)
+        },1000)
+        handleMyDate(10)
+
+        document.getElementById('distanceYear').addEventListener('change',({target})=>{
+            const value = target.value
+            console.log('value ::==',value)
+            handleMyDate(value)
+        })
+      }
+
+      function handleMyDate(distanceYear){
+        document.getElementById('pastDate').innerHTML =  moment().subtract(distanceYear, 'year').format(HUMAN_FORMAT)
+        document.getElementById('futureDate').innerHTML =  moment().add(distanceYear, 'year').format(HUMAN_FORMAT)        
+        Array.from(document.getElementsByClassName('distanceYear')).forEach(span => span.innerHTML = distanceYear)
+      }
+
     </script>
   </body>
 </html>
