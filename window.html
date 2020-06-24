@@ -13,6 +13,7 @@
     <div class="ui container">
       <h2>Course Cypress Automate Testing @PTT</h2>
       <div class="ui top attached tabular menu">
+        <a class="item" href="index.html" data-tab="zero">Index</a>
         <a class="item" href="register.html" data-tab="first"
           >Register</a
         >
@@ -25,13 +26,19 @@
         <a class="item" href="table.html" data-tab="five">Table Coronavirus-19</a>
       </div>
       <div class="ui bottom attached tab segment active" data-tab="first">
-        <button class="ui green button" onclick="alertFunction()">
+        <button class="ui green button" 
+          id="btnAlert"
+          onclick="alertFunction()">
           Window Alert
         </button>
-        <button class="ui blue button" onclick="promptFunction()">
+        <button class="ui blue button" 
+          id="btnPromt"
+          onclick="promptFunction()">
           Window Promt
         </button>
-        <button class="ui orange button" onclick="confirmFunction()">
+        <button class="ui orange button" 
+          id="btnConfirm"
+          onclick="confirmFunction()">
           Window Confirm
         </button>
       </div>

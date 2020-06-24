@@ -9,9 +9,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <style>
-      .required span{
-        color: red;        
+      .required span {
+        color: red;
       }
     </style>
   </head>
@@ -19,6 +20,7 @@
     <div class="ui container" id="cypressApp">
       <h2>Course Cypress Automate Testing @PTT</h2>
       <div class="ui top attached tabular menu">
+        <a class="item" href="index.html" data-tab="zero">Index</a>
         <a class="item active" href="register.html" data-tab="first"
           >Register</a
         >
@@ -44,6 +46,8 @@
                 name="firstName"
                 id="firstName"
                 v-model="user.firstName"
+                data-attr="firstName"
+                class="firstName className1 className2"
                 required
               />
             </div>
@@ -54,6 +58,8 @@
                 name="lastName"
                 id="lastName"
                 v-model="user.lastName"
+                data-attr="lastName"
+                class="lastName className3 className4"
                 required
               />
             </div>
@@ -88,38 +94,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="fields">
-            <div class="four wide field">
-              <label class="required">Phone <span>*</span></label>
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                v-model="user.phone"
-                required
-              />
-            </div>
-            <div class="four wide field">
-              <label class="required">Email <span>*</span></label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                v-model="user.email"
-                required
-              />
-            </div>
-            <div class="two wide field">
-              <label class="required">Age <span>*</span></label>
-              <input
-                type="number"
-                name="age"
-                id="age"
-                v-model="user.age"
-                required
-              />
-            </div>
             <div class="five wide field">
               <label class="required">Occupation <span>*</span></label>
               <select
@@ -136,6 +110,49 @@
                 <option value="soldire">Soldier</option>
                 <option value="teacher">Teacher</option>
               </select>
+            </div>
+          </div>
+          <div class="fields">
+            <div class="four wide field">
+              <label class="required">Phone <span>*</span></label>
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                v-model="user.phone"
+                data-attr="phone"
+                required
+              />
+            </div>
+            <div class="four wide field">
+              <label class="required">Email <span>*</span></label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                v-model="user.email"
+                required
+              />
+            </div>
+            <div class="four wide field">
+              <label class="required">Birth Date <span>*</span></label>
+              <input
+                type="date"
+                name="birthDate"
+                id="birthDate"
+                v-model="user.birthDate"
+                required
+              />{{user.birthDate}}
+            </div>
+            <div class="two wide field">
+              <label class="required">Age <span>*</span></label>
+              <input
+                type="number"
+                name="age"
+                id="age"
+                v-model="user.age"
+                required
+              />
             </div>
           </div>
           <div class="field">

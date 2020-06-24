@@ -8,20 +8,70 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/locale/th.min.js" integrity="sha256-6c9nm4wO8bj7f3jY/SJC4W+LhrucKkuhBRyVuQgOXQg=" crossorigin="anonymous"></script>    
   </head>
   <body>
-    <div class="ui container">
+    <div class="ui container" id="cypressApp">
       <h2>Course Cypress Automate Testing @PTT</h2>
       <div class="ui top attached tabular menu">
+        <a class="item active" href="index.html" data-tab="zero">Index</a>
         <a class="item" href="register.html" data-tab="first">Register</a>
         <a class="item" href="window.html" data-tab="second">Window</a>
         <a class="item" href="login.html" data-tab="third">Login</a>
-        <a class="item" href="change-password.html" data-tab="four">Change Password</a>
-        <a class="item" href="table.html" data-tab="five">Table Coronavirus-19</a>
+        <a class="item" href="change-password.html" data-tab="four"
+          >Change Password</a
+        >
+        <a class="item" href="table.html" data-tab="five"
+          >Table Coronavirus-19</a
+        >
       </div>
-      <div class="ui bottom attached tab segment active" data-tab="first">
-          เลือก Menu ที่ต้องการใช้งาน
+      <div class="ui bottom attached tab segment active form" data-tab="zero">
+        <div class="eight fluid wide inline field">
+          ปี
+          <input
+            type="range"
+            min="1"
+            max="100"
+            v-model="distanceYear"
+            style="width: 100%;"
+          />
+        </div>
+        <div class="eight wide field">
+          <h3>วันและเวลา ปัจจุบัน {{nowDate}}</h3>
+          <h3>วันและเวลา ย้อนหลัง {{distanceYear}} ปี คือ {{pastDate}}</h3>
+          <h3>วันและเวลา อนาคต {{distanceYear}} ปี คือ {{futureDate}}</h3>
+        </div>
       </div>
     </div>
+    <script>
+      const HUMAN_FORMAT = 'DD/MM/YYYY HH:mm:ss';      
+      new Vue({
+        data: {
+          distanceYear: 10,
+          nowDate: moment().format(HUMAN_FORMAT),
+          nowDayOfWeek : moment().day(),
+          pastDate: moment().subtract(10, 'year').format(HUMAN_FORMAT),
+          futureDate: moment().add(10, 'year').format(HUMAN_FORMAT),
+        },
+        watch: {
+          distanceYear: function (newVal, oldVal) {
+            (this.pastDate = moment()
+              .subtract(newVal, 'year')
+              .format(HUMAN_FORMAT)),
+              (this.futureDate = moment().add(newVal, 'year').format(HUMAN_FORMAT));
+          },
+        },
+        created() {},
+        mounted() {          
+          this.$nextTick(() => {
+            setInterval(() => {
+              this.nowDate = moment().format('DD/MM/YYYY HH:mm:ss');
+            }, 1000);
+          });
+        }
+      }).$mount('#cypressApp');
+    </script>
   </body>
 </html>
