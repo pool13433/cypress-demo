@@ -14,58 +14,149 @@
       <h2>Course Cypress Automated Testing @PTT</h2>
       <div class="ui top attached tabular menu">
         <a class="item" href="index.html" data-tab="zero">Index</a>
-        <a class="item" href="register.html" data-tab="first"
-          >Register</a
-        >
+        <a class="item" href="register.html" data-tab="first">Register</a>
         <a class="item" href="register-list.html" data-tab="first-list"
           >Register List</a
         >
         <a class="item active" href="window.html" data-tab="second">Window</a>
         <a class="item" href="login.html" data-tab="third">Login</a>
-        <a class="item" href="change-password.html" data-tab="four">Change Password</a>
-        <a class="item" href="table.html" data-tab="five">Table Coronavirus-19</a>
+        <a class="item" href="change-password.html" data-tab="four"
+          >Change Password</a
+        >
+        <a class="item" href="table.html" data-tab="five"
+          >Table Coronavirus-19</a
+        >
+        <a class="item" href="elements.html" data-tab="six">Chai-jQuery</a>
       </div>
       <div class="ui bottom attached tab segment active" data-tab="first">
-        <button class="ui green button" 
-          id="btnAlert"
-          onclick="alertFunction()">
-          Window Alert
-        </button>
-        <button class="ui blue button" 
-          id="btnPromt"
-          onclick="promptFunction()">
-          Window Promt
-        </button>
-        <button class="ui orange button" 
-          id="btnConfirm"
-          onclick="confirmFunction()">
-          Window Confirm
-        </button>
+        <div class="ui grid">
+          <div class="sixteen wide column">
+            <button
+              class="ui green button"
+              id="btnAlert"
+              onclick="alertFunction()"
+            >
+              Window Alert
+            </button>
+            <button
+              class="ui blue button"
+              id="btnPromt"
+              onclick="promptFunction()"
+            >
+              Window Promt
+            </button>
+            <button
+              class="ui orange button"
+              id="btnConfirm"
+              onclick="confirmFunction()"
+            >
+              Window Confirm
+            </button>
+          </div>
+          <div class="sixteen wide column">
+            <button class="ui blue button" id="btnFirst">
+              mySpyCalledFirst click 0
+            </button>
+            <button class="ui pink button" id="btnSecound">
+              mySpyCalledSecound click 0
+            </button>
+            <button class="ui brown button" id="btnThird">
+              mySpyCalledThird click 0
+            </button>
+            <button class="ui yellow button" id="btnFour">
+              mySpyCalledFour click 0
+            </button>
+            <button class="ui orange button" id="btnFive">
+              mySpyCalledFive click 0
+            </button>
+          </div>
+        </div>
       </div>
       <p id="TextOut"></p>
     </div>
 
     <script>
-       function alertFunction() {
-        alert("Alert!!");
-        document.getElementById("TextOut").innerHTML = "Alert Click!!";
+      function alertFunction() {
+        alert('Alert!!');
+        document.getElementById('TextOut').innerHTML = 'Alert Click!!';
       }
 
       function promptFunction() {
-        var person = prompt("Please enter your name");
+        var person = prompt('Please enter your name');
         if (person != null) {
-          document.getElementById("TextOut").innerHTML =
-          person;
+          document.getElementById('TextOut').innerHTML = person;
         }
       }
 
       function confirmFunction() {
-        var person = confirm("Confirm?");
+        var person = confirm('Confirm?');
         if (person == true) {
-          document.getElementById("TextOut").innerHTML = "Confirm";
+          document.getElementById('TextOut').innerHTML = 'Confirm';
         } else {
-          document.getElementById("TextOut").innerHTML = "No";
+          document.getElementById('TextOut').innerHTML = 'No';
         }
+      }
+      let countFirst = 1,
+        countSecound = 1,
+        countThird = 1,
+        countFour = 1,
+        countFive = 0;
+      window.onload = () => {
+        document
+          .getElementById('btnFirst')
+          .addEventListener('click', ({ target }) => {
+            mySpyCalledFirst(target);
+          });
+        document
+          .getElementById('btnSecound')
+          .addEventListener('click', ({ target }) => {
+            mySpyCalledSecound(target);
+          });
+        document
+          .getElementById('btnThird')
+          .addEventListener('click', ({ target }) => {
+            mySpyCalledThird(target);
+          });
+        document
+          .getElementById('btnFour')
+          .addEventListener('click', ({ target }) => {
+            const newText = mySpyCalledFour(target);
+            console.log('newText ::==', newText);
+            target.innerHTML = newText;
+            countFour++;
+          });
+        document
+          .getElementById('btnFive')
+          .addEventListener('click', ({ target }) => {
+            const newCountVal = mySpyCalledFive();
+            console.log('newCountVal ::==', newCountVal);
+            target.innerHTML = 'mySpyCalledFive click to double ' + countFive;            
+          });
+      };
+
+      function mySpyCalledFirst(target) {
+        console.log('mySpyCalledFirst');
+        target.innerHTML = 'mySpyCalledFirst click ' + countFirst;
+        countFirst++;
+      }
+
+      function mySpyCalledSecound(target) {
+        console.log('mySpyCalledSecound');
+        target.innerHTML = 'mySpyCalledSecound click ' + countSecound;
+        countSecound++;
+      }
+
+      function mySpyCalledThird(target) {
+        console.log('mySpyCalledThird');
+        target.innerHTML = 'mySpyCalledThird click ' + countThird;
+        countThird++;
+      }
+      function mySpyCalledFour(target) {
+        return 'mySpyCalledFour click ' + countFour;
+      }
+      function mySpyCalledFive() {
+        countFive+= 2
+        return countFive;
       }
     </script>
   </body>

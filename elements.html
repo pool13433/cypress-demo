@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window Methods</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/locale/th.min.js"
+      integrity="sha256-6c9nm4wO8bj7f3jY/SJC4W+LhrucKkuhBRyVuQgOXQg="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="ui container" id="cypressApp">
+      <h2>Course Cypress Automated Testing @PTT</h2>
+      <div class="ui top attached tabular menu">
+        <a class="item" href="index.html" data-tab="zero">Index</a>
+        <a class="item" href="register.html" data-tab="first">Register</a>
+        <a class="item" href="register-list.html" data-tab="first-list"
+          >Register List</a
+        >
+        <a class="item" href="window.html" data-tab="second">Window</a>
+        <a class="item" href="login.html" data-tab="third">Login</a>
+        <a class="item" href="change-password.html" data-tab="four"
+          >Change Password</a
+        >
+        <a class="item" href="table.html" data-tab="five"
+          >Table Coronavirus-19</a
+        >
+        <a class="item active" href="elements.html" data-tab="six"
+          >Chai-jQuery</a
+        >
+      </div>
+      <div class="ui bottom attached tab segment active form" data-tab="six">
+        <form class="ui form" style="background-color: rgb(255, 255, 200);"
+            data-random="77547562649602259494">
+          <div class="fields">
+            <div class="four wide field">
+              <label for="">Input:Text</label>
+              <input type="text" name="text" id="text" data-key="54862774159187434745"/>
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Email</label>
+              <input type="email" name="email" id="email" 
+              value="cypress@gmail.com" 
+              data-key="39122824508278085851"/>
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Password</label>
+              <input type="password" name="password" id="password" autofocus/>
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Checkbox</label>
+              <div class="ui checkbox">
+                <input type="checkbox" name="nissan" id="nissan" />
+                <label for="nissan"></label>
+              </div>
+              <div class="ui checked checkbox">
+                <input type="checkbox" name="toyota" id="toyota" />
+                <label for="nissan"></label>
+              </div>
+              <div class="ui checked checkbox">
+                <input type="checkbox" name="mazda" id="mazda" />
+                <label for="nissan"></label>
+              </div>
+            </div>
+          </div>
+          <div class="fields">
+            <div class="four wide field">
+              <label for="">Input:Date</label>
+              <input type="date" name="date" id="date" />
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Color</label>
+              <input type="color" name="color" id="color" />
+            </div>
+            <div class="four wide field">
+              <label for="">Input:File</label>
+              <input type="file" name="file" id="file" />
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Time</label>
+              <input type="time" name="time" id="time" />
+            </div>
+          </div>
+          <div class="fields">
+            <div class="four wide field">
+              <label for="">Input:Tel</label>
+              <input type="tel" name="tel" id="tel" />
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Range</label>
+              <input type="range" name="range" id="range" />
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Month</label>
+              <input type="month" name="month" id="month" />
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Hidden</label>
+              <input type="hidden" name="hidden" id="hidden" />
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="four wide field">
+              <label for="">Input:Search</label>
+              <input type="search" name="search" id="search" />
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Week</label>
+              <input type="week" name="week" id="week" />
+            </div>
+            <div class="four wide field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="radio" id="radio1" />
+                <label for="">Input:Radio1</label>                
+              </div>
+              <div class="ui radio checkbox">
+                <input type="radio" name="radio" id="radio2" />
+                <label for="">Input:Radio2</label>                
+              </div>
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Reset</label>
+              <input type="reset" name="reset" id="reset" class="ui red button"/>
+            </div>
+          </div>
+          <div class="fields">
+            <div class="four wide field">
+              <label for="">Input:Text-Disabled</label>
+              <input type="text" name="text-disabled" id="text-disabled" disabled/>
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Email-Readonly</label>
+              <input type="email" name="email-readonly" id="email-readonly" readonly/>
+            </div>
+            <div class="four wide field">
+              <label for="">Dropdown:Select</label>
+              <select name="select" id="select">
+                <option value="1">item 1</option>
+                <option value="2">item 2</option>
+                <option value="3">item 3</option>
+                <option value="4">item 4</option>
+                <option value="5">item 5</option>
+              </select>
+            </div>
+            <div class="four wide field">
+              <label for="">Input:Checkbox</label>
+              <div class="ui checkbox">
+                <input type="checkbox" name="nissan-disabled" id="nissan-disabled" disabled/>
+                <label for="nissan-disabled">nissan-disabled</label>
+              </div>
+              <div class="ui checked checkbox">
+                <input type="checkbox" name="toyota" id="toyota-readonly" readonly/>
+                <label for="nissan-readonly">toyota-readonly</label>
+              </div>
+              <div class="ui checked checkbox">
+                <input type="checkbox" name="mazda" id="mazda-checked" checked/>
+                <label for="nissan-checked">nissan-checked</label>
+              </div>
+            </div>
+          </div>
+          <div class="fields">
+            <div class="four wide field" id="i-love-test-html">
+              <h1>I love testing</h1>
+            </div>
+            <div class="four wide field" id="i-love-test-text">
+              <h1>I love testing</h1>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

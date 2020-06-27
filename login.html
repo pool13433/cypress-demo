@@ -20,8 +20,15 @@
         >
         <a class="item" href="window.html" data-tab="second">Window</a>
         <a class="item active" href="login.html" data-tab="third">Login</a>
-        <a class="item" href="change-password.html" data-tab="four">Change Password</a>
-        <a class="item" href="table.html" data-tab="five">Table Coronavirus-19</a>
+        <a class="item" href="change-password.html" data-tab="four"
+          >Change Password</a
+        >
+        <a class="item" href="table.html" data-tab="five"
+          >Table Coronavirus-19</a
+        >
+        <a class="item" href="elements.html"  data-tab="six"
+          >Chai-jQuery</a
+        >
       </div>
       <div class="ui bottom attached tab segment active" data-tab="first">
         <!-- Enter Code Here-->
@@ -39,32 +46,35 @@
             <button class="ui orange button" type="reset">Reset</button>
           </form>
         </div>
+        
       </div>
     </div>
     <script>
-      window.onload = ()=>{
-             
-      }
-      document.getElementById('login').addEventListener('submit',(e)=>{
-        console.log('e ::==',e)        
+      window.onload = () => {};
+      document.getElementById('login').addEventListener('submit', (e) => {
+        console.log('e ::==', e);
         e.preventDefault();
-        const username = isRequired('username')
-        const password = isRequired('password')  
-        console.log(`username ::==${username} , password ::== ${password}`)
-        if(username==undefined || password == undefined || 
-          username=='' || password == '' ){
-          alert('กรุณากรอก username หรือ password')
+        const username = isRequired('username');
+        const password = isRequired('password');
+        console.log(`username ::==${username} , password ::== ${password}`);
+        if (
+          username == undefined ||
+          password == undefined ||
+          username == '' ||
+          password == ''
+        ) {
+          alert('กรุณากรอก username หรือ password');
           return;
-        }else if(password.length < 4){
-          alert('กรุณากรอก password มากกว่า')
+        } else if (password.length < 4) {
+          alert('กรุณากรอก password มากกว่า');
           return;
-        }else{
-          alert('Login Successfully.')
-          //e.target.submit()  
-        }        
-      })
-      function isRequired(elementId){
-        const value =  document.getElementById(elementId).value
+        } else {
+          alert('Login Successfully.');
+          //e.target.submit()
+        }
+      });
+      function isRequired(elementId) {
+        const value = document.getElementById(elementId).value;
         return value;
       }
     </script>
