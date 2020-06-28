@@ -10,7 +10,11 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/locale/th.min.js" integrity="sha256-6c9nm4wO8bj7f3jY/SJC4W+LhrucKkuhBRyVuQgOXQg=" crossorigin="anonymous"></script>    
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/locale/th.min.js"
+      integrity="sha256-6c9nm4wO8bj7f3jY/SJC4W+LhrucKkuhBRyVuQgOXQg="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="ui container" id="cypressApp">
@@ -29,9 +33,7 @@
         <a class="item" href="table.html" data-tab="five"
           >Table Coronavirus-19</a
         >
-        <a class="item" href="elements.html"  data-tab="six"
-          >Chai-jQuery</a
-        >
+        <a class="item" href="elements.html" data-tab="six">Chai-jQuery</a>
       </div>
       <div class="ui bottom attached tab segment active form" data-tab="zero">
         <div class="nine fluid wide inline field">
@@ -40,26 +42,47 @@
             type="range"
             min="1"
             max="100"
-            step="1" value="1"
+            step="1"
+            value="1"
             id="distanceYear"
             style="width: 100%;"
           />
         </div>
         <div class="sixteen wide field">
           <h2>วันและเวลา ปัจจุบัน <span id="nowDate"> {{nowDate}}</span></h2>
-          <h2>วันและเวลา ย้อนหลัง <span class="distanceYear"></span> ปี คือ <span id="pastDate">{{pastDate}}</span></h2>
-          <h2>วันและเวลา อนาคต <span class="distanceYear"></span>  ปี คือ <span id="futureDate"> {{futureDate}}</span></h2>
+          <h2>
+            วันและเวลา ย้อนหลัง <span class="distanceYear"></span> ปี คือ
+            <span id="pastDate">{{pastDate}}</span>
+          </h2>
+          <h2>
+            วันและเวลา อนาคต <span class="distanceYear"></span> ปี คือ
+            <span id="futureDate"> {{futureDate}}</span>
+          </h2>
         </div>
         <div class="ui centered column" style="text-align: center;">
-          <a class="ui green button" target="_blank"
-            href="./Day1 Cypress Automate Testing.pdf">download slide day 1</a>
-          <a class="ui green button" target="_blank"
-            href="./Day2 Cypress Automate Testing.pdf">download slide day 2</a>
+          <a
+            class="ui green button"
+            target="_blank"
+            href="./Day1 Cypress Automate Testing.pdf"
+            >download slide day 1</a
+          >
+          <a
+            class="ui green button"
+            target="_blank"
+            href="./Day2 Cypress Automate Testing-v2.pdf"
+            >download slide day 2 (ปรับปรุง)</a
+          >
+          <a
+            class="ui icon black button"
+            href="https://github.com/pool13433/cypress-demo-testsuite/archive/master.zip"
+            target="_blank"
+            > <i class="github icon"></i> Github Download</a
+          >
         </div>
       </div>
     </div>
     <script>
-      const HUMAN_FORMAT = 'DD/MM/YYYY HH:mm:ss';      
+      const HUMAN_FORMAT = 'DD/MM/YYYY HH:mm:ss';
       /*new Vue({
         data: {
           distanceYear: 10,
@@ -86,26 +109,37 @@
         }
       }).$mount('#cypressApp');*/
 
-      window.onload = ()=>{
-        document.getElementById('nowDate').innerHTML =  moment().format(HUMAN_FORMAT)
-        setInterval(()=>{
-          document.getElementById('nowDate').innerHTML =  moment().format(HUMAN_FORMAT)
-        },1000)
-        handleMyDate(10)
+      window.onload = () => {
+        document.getElementById('nowDate').innerHTML = moment().format(
+          HUMAN_FORMAT
+        );
+        setInterval(() => {
+          document.getElementById('nowDate').innerHTML = moment().format(
+            HUMAN_FORMAT
+          );
+        }, 1000);
+        handleMyDate(10);
 
-        document.getElementById('distanceYear').addEventListener('change',({target})=>{
-            const value = target.value
-            console.log('value ::==',value)
-            handleMyDate(value)
-        })
+        document
+          .getElementById('distanceYear')
+          .addEventListener('change', ({ target }) => {
+            const value = target.value;
+            console.log('value ::==', value);
+            handleMyDate(value);
+          });
+      };
+
+      function handleMyDate(distanceYear) {
+        document.getElementById('pastDate').innerHTML = moment()
+          .subtract(distanceYear, 'year')
+          .format(HUMAN_FORMAT);
+        document.getElementById('futureDate').innerHTML = moment()
+          .add(distanceYear, 'year')
+          .format(HUMAN_FORMAT);
+        Array.from(document.getElementsByClassName('distanceYear')).forEach(
+          (span) => (span.innerHTML = distanceYear)
+        );
       }
-
-      function handleMyDate(distanceYear){
-        document.getElementById('pastDate').innerHTML =  moment().subtract(distanceYear, 'year').format(HUMAN_FORMAT)
-        document.getElementById('futureDate').innerHTML =  moment().add(distanceYear, 'year').format(HUMAN_FORMAT)        
-        Array.from(document.getElementsByClassName('distanceYear')).forEach(span => span.innerHTML = distanceYear)
-      }
-
     </script>
   </body>
 </html>
